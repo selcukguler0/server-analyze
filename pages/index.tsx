@@ -140,7 +140,8 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">CPU Load</div>
 									<div className="text-white">
-										100.69% <span className="text-gray-300 text-xs">/100</span>
+										{Math.floor(Math.random() * 150)} %{" "}
+										<span className="text-gray-300 text-xs">/100</span>
 									</div>
 								</div>
 							</div>
@@ -152,7 +153,7 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">Memory</div>
 									<div className="text-white">
-										401.23 Mib{" "}
+										{Math.floor(Math.random() * 1000)} Mib{" "}
 										<span className="text-gray-300 text-xs">/1.95 GiB</span>
 									</div>
 								</div>
@@ -165,7 +166,7 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">Disk</div>
 									<div className="text-white">
-										900 Mib{" "}
+										{Math.floor(Math.random() * 1000)} Mib{" "}
 										<span className="text-gray-300 text-xs">/16 GiB</span>
 									</div>
 								</div>
@@ -177,7 +178,9 @@ export default function Home() {
 								</div>
 								<div>
 									<div className="text-gray-300 text-xs">Network (Inbound)</div>
-									<div className="text-white">50 Mib</div>
+									<div className="text-white">
+										{Math.floor(Math.random() * 300)} Mib
+									</div>
 								</div>
 							</div>
 
@@ -189,7 +192,9 @@ export default function Home() {
 									<div className="text-gray-300 text-xs">
 										Network (Outbound)
 									</div>
-									<div className="text-white">150 Mib</div>
+									<div className="text-white">
+										{Math.floor(Math.random() * 300)} Mib
+									</div>
 								</div>
 							</div>
 						</div>
@@ -199,10 +204,10 @@ export default function Home() {
 						<div className="flex-1 bg-slate-600 text-white rounded m-2">
 							<Line options={cpuLoadOptions} data={cpuLoadData} />
 						</div>
-						<div className="bg-slate-600 text-white rounded m-2">
+						<div className="flex-1 bg-slate-600 text-white rounded m-2">
 							<Line options={memoryOptions} data={memoryData} />
 						</div>
-						<div className="bg-slate-600 text-white rounded m-2">
+						<div className="flex-1 bg-slate-600 text-white rounded m-2">
 							<Line options={networkOptions} data={networkData} />
 						</div>
 					</div>

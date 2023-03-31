@@ -30,8 +30,8 @@ export const cpuLoadData = {
 	datasets: [
 		{
 			fill: true,
-			label: "Dataset 2",
-			data: [22, 10, 5, 2, 20, 30],
+			label: "% CPU Load",
+			data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 150)),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},

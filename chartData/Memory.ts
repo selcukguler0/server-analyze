@@ -9,7 +9,7 @@ export const memoryOptions = {
 		},
 		title: {
 			display: true,
-			text: "CPU Load",
+			text: "Memory",
 			color: "white",
 		},
 	},
@@ -30,8 +30,8 @@ export const memoryData = {
 	datasets: [
 		{
 			fill: true,
-			label: "Dataset 2",
-			data: [0, 10, 5, 2, 20, 30],
+			label: "Mib",
+			data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 2000)),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},
