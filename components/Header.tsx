@@ -13,12 +13,16 @@ export default function Header() {
 	return (
 		<>
 			<header className="bg-slate-900 p-3 flex justify-around items-center">
-				<h1 className="text-white">Pterodactyl</h1>
+				<h1 className="text-white text-xl">Pterodactyl</h1>
 				<div className="flex items-center">
 					<HiSearch className="text-white mr-5" />
 					<ImParagraphJustify className="text-white mr-5" />
 					<IoMdSettings className="text-white mr-5" />
-					<div className="text-white mr-5">a</div>
+					<img
+						className="w-5 h-5 rounded-full mr-5"
+						src="https://avatars.githubusercontent.com/u/75174547?v=4"
+						alt="Rounded avatar"
+					/>
 					<IoExitOutline className="text-white" />
 				</div>
 			</header>

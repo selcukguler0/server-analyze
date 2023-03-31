@@ -75,19 +75,19 @@ export default function Home() {
 						<div className="w-2/3 bg-black rounded flex flex-col m-2">
 							<table className="flex-1">
 								<tbody>
-									<tr className="flex">
-										<td className="text-amber-300 pt-2 pl-2">selcuk@root:</td>{" "}
-										<td className="text-white pt-2 pl-2">
+									<tr className="flex p-2 hover:bg-gray-600">
+										<td className="text-amber-300 pl-2">selcuk@root:</td>{" "}
+										<td className="text-white pl-2">
 											Server markes as offline...
 										</td>
 									</tr>
-									<tr className="flex">
+									<tr className="flex p-2 hover:bg-gray-600">
 										<td className="text-amber-300 pl-2">[Pterodactyl]:</td>{" "}
 										<td className="text-white pl-2">
 											Tring to connect server...
 										</td>
 									</tr>
-									<tr className="flex">
+									<tr className="flex p-2 hover:bg-gray-600">
 										<td className="text-amber-300 pl-2">[Pterodactyl]:</td>{" "}
 										<td className="text-white pl-2">
 											Tring to connect server...
