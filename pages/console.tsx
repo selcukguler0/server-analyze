@@ -1,8 +1,5 @@
 import Head from "next/head";
-import { HiSearch } from "react-icons/hi";
-import { ImParagraphJustify } from "react-icons/im";
-import { IoMdSettings } from "react-icons/io";
-import { IoExitOutline } from "react-icons/io5";
+import { useState } from "react";
 import { AiOutlineWifi } from "react-icons/ai";
 import { AiFillClockCircle } from "react-icons/ai";
 import { BsFillCpuFill } from "react-icons/bs";
@@ -41,6 +38,12 @@ ChartJS.register(
 );
 
 export default function Home() {
+	const [cpuLoad] = useState(Math.floor(Math.random() * 150));
+	const [memory] = useState(Math.floor(Math.random() * 1000));
+	const [networkUp] = useState(Math.floor(Math.random() * 300));
+	const [networkDown] = useState(Math.floor(Math.random() * 300));
+	const [disk] = useState(Math.floor(Math.random() * 6000));
+
 	return (
 		<>
 			<Head>
@@ -51,20 +54,6 @@ export default function Home() {
 			</Head>
 			<div className="flex flex-col min-h-screen">
 				{/* header */}
-				<header className="bg-slate-900 p-3 flex justify-around items-center">
-					<h1 className="text-white">Pterodactyl</h1>
-					<div className="flex items-center">
-						<HiSearch className="text-white mr-5" />
-						<ImParagraphJustify className="text-white mr-5" />
-						<IoMdSettings className="text-white mr-5" />
-						<div className="text-white mr-5">a</div>
-						<IoExitOutline className="text-white" />
-					</div>
-				</header>
-				{/* navbar */}
-				<nav className="bg-slate-800 p-2 flex justify-around items-center">
-					Nav
-				</nav>
 				<main className="flex flex-col justify-around items-center mt-3">
 					{/* body header */}
 					<div className="flex justify-between items-center w-full mx-auto max-w-screen-lg">
@@ -129,7 +118,7 @@ export default function Home() {
 								</div>
 								<div>
 									<div className="text-gray-300 text-xs">Uptime</div>
-									<div className="text-white">0h 1m 1s</div>
+									<div className="text-white">1d 0h 3m 11s</div>
 								</div>
 							</div>
 
@@ -140,7 +129,7 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">CPU Load</div>
 									<div className="text-white">
-										{Math.floor(Math.random() * 150)} %{" "}
+										{cpuLoad} %{" "}
 										<span className="text-gray-300 text-xs">/100</span>
 									</div>
 								</div>
@@ -153,7 +142,7 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">Memory</div>
 									<div className="text-white">
-										{Math.floor(Math.random() * 1000)} Mib{" "}
+										{memory} Mib{" "}
 										<span className="text-gray-300 text-xs">/1.95 GiB</span>
 									</div>
 								</div>
@@ -166,7 +155,7 @@ export default function Home() {
 								<div>
 									<div className="text-gray-300 text-xs">Disk</div>
 									<div className="text-white">
-										{Math.floor(Math.random() * 1000)} Mib{" "}
+										{disk} Mib{" "}
 										<span className="text-gray-300 text-xs">/16 GiB</span>
 									</div>
 								</div>
@@ -178,9 +167,7 @@ export default function Home() {
 								</div>
 								<div>
 									<div className="text-gray-300 text-xs">Network (Inbound)</div>
-									<div className="text-white">
-										{Math.floor(Math.random() * 300)} Mib
-									</div>
+									<div className="text-white">{networkUp} Mib</div>
 								</div>
 							</div>
 
@@ -192,9 +179,7 @@ export default function Home() {
 									<div className="text-gray-300 text-xs">
 										Network (Outbound)
 									</div>
-									<div className="text-white">
-										{Math.floor(Math.random() * 300)} Mib
-									</div>
+									<div className="text-white">{networkDown} Mib</div>
 								</div>
 							</div>
 						</div>
@@ -212,12 +197,6 @@ export default function Home() {
 						</div>
 					</div>
 				</main>
-
-				<footer className="flex justify-center w-full mx-auto max-w-screen-lg">
-					<div className="text-gray-300 p-2">
-						Pterodactyl© 2016 - {new Date().getFullYear()}
-					</div>
-				</footer>
 			</div>
 		</>
 	);
