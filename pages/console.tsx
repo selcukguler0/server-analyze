@@ -8,6 +8,8 @@ import { ImFloppyDisk } from "react-icons/im";
 import { VscCloudUpload } from "react-icons/vsc";
 import { VscCloudDownload } from "react-icons/vsc";
 
+import { useStopwatch } from "react-timer-hook";
+
 // Chart
 import { cpuLoadData, cpuLoadOptions } from "@/chartData/CpuLoad";
 import { memoryData, memoryOptions } from "@/chartData/Memory";
@@ -44,6 +46,11 @@ export default function Home() {
 	const [networkDown] = useState(Math.floor(Math.random() * 300));
 	const [disk] = useState(Math.floor(Math.random() * 6000));
 
+	const [consoleDate] = useState(new Date().toLocaleString());
+
+	const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
+		useStopwatch({ autoStart: true });
+
 	return (
 		<>
 			<Head>
@@ -59,13 +66,21 @@ export default function Home() {
 					<div className="flex justify-between items-center w-full mx-auto max-w-screen-lg">
 						<p className="w-2/3 text-white m-2 font-medium text-xl">sa</p>
 						<div className="w-1/3 flex">
-							<button className="bg-sky-600 p-2 px-5 m-1 text-white rounded grow">
+							<button
+								onClick={start}
+								className="bg-sky-600 p-2 px-5 m-1 text-white rounded grow">
 								Start
 							</button>
-							<button className="bg-neutral-600 p-2 px-5 m-1 text-white rounded grow">
+							<button
+								onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+									pause()
+								}
+								className="bg-neutral-600 p-2 px-5 m-1 text-white rounded grow">
 								Restart
 							</button>
-							<button className="bg-rose-600 p-2 px-5 m-1 text-white rounded grow">
+							<button
+								onClick={pause}
+								className="bg-rose-600 p-2 px-5 m-1 text-white rounded grow">
 								Stop
 							</button>
 						</div>
@@ -76,22 +91,33 @@ export default function Home() {
 							<table className="flex-1">
 								<tbody>
 									<tr className="flex p-2 hover:bg-gray-600">
-										<td className="text-amber-300 pl-2">selcuk@root:</td>{" "}
+										<td className="text-amber-300 pl-2">selcuk@root~</td>{" "}
 										<td className="text-white pl-2">
-											Server markes as offline...
+											Server marked as offline...
 										</td>
 									</tr>
 									<tr className="flex p-2 hover:bg-gray-600">
-										<td className="text-amber-300 pl-2">[Pterodactyl]:</td>{" "}
+										<td className="text-amber-300 pl-2">[Pterodactyl]~</td>{" "}
 										<td className="text-white pl-2">
 											Tring to connect server...
 										</td>
 									</tr>
 									<tr className="flex p-2 hover:bg-gray-600">
-										<td className="text-amber-300 pl-2">[Pterodactyl]:</td>{" "}
 										<td className="text-white pl-2">
-											Tring to connect server...
+											Loading libraries, please wait
 										</td>
+									</tr>
+									<tr className="flex p-2 hover:bg-gray-600">
+										<td className="text-blue-300 pl-2">
+											[{consoleDate} INFO]:
+										</td>{" "}
+										<td className="text-white pl-2">Loaded 10 recipes.</td>
+									</tr>
+									<tr className="flex p-2 hover:bg-gray-600">
+										<td className="text-blue-300 pl-2">
+											[{consoleDate} INFO]:
+										</td>{" "}
+										<td className="text-white pl-2">Generating keypair.</td>
 									</tr>
 								</tbody>
 							</table>
@@ -118,7 +144,9 @@ export default function Home() {
 								</div>
 								<div>
 									<div className="text-gray-300 text-xs">Uptime</div>
-									<div className="text-white">1d 0h 3m 11s</div>
+									<div className="text-white">
+										{days}d {hours}h {minutes}m {seconds}s
+									</div>
 								</div>
 							</div>
 
