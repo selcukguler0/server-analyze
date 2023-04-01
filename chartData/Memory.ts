@@ -21,9 +21,28 @@ export const memoryOptions = {
 			ticks: { display: false },
 		},
 	},
+	animations: {
+		tension: {
+			duration: 1000,
+			easing: "linear",
+			from: 1,
+			to: 0,
+			loop: true,
+		},
+	},
 };
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
+
+// This function is used to generate random data for the chart, but it is also fixing hydration issues
+function randomData() {
+	if (typeof window !== "undefined") {
+		return Array.from({ length: 6 }, () => Math.floor(Math.random() * 2000));
+	} else {
+		// Return a default value for server rendering
+		return [1, 2, 3, 4, 5, 6];
+	}
+}
 
 export const memoryData = {
 	labels,
@@ -31,7 +50,7 @@ export const memoryData = {
 		{
 			fill: true,
 			label: "Mib",
-			data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 2000)),
+			data: randomData(),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},

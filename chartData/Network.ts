@@ -21,9 +21,28 @@ export const networkOptions = {
 			ticks: { display: false },
 		},
 	},
+	animations: {
+		tension: {
+			duration: 1000,
+			easing: "easeOutBounce",
+			from: 1,
+			to: 0,
+			loop: true,
+		},
+	},
 };
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
+
+// This function is used to generate random data for the chart, but it is also fixing hydration issues
+function randomData() {
+	if (typeof window !== "undefined") {
+		return Array.from({ length: 6 }, () => Math.floor(Math.random() * 300));
+	} else {
+		// Return a default value for server rendering
+		return [1, 2, 3, 4, 5, 6];
+	}
+}
 
 export const networkData = {
 	labels,
@@ -31,14 +50,14 @@ export const networkData = {
 		{
 			fill: true,
 			label: "Up",
-			data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 600)),
+			data: randomData(),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},
 		{
 			fill: true,
 			label: "Down",
-			data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 600)),
+			data: randomData(),
 			borderColor: "rgb(234,182,118)",
 			backgroundColor: "rgb(226,135,67)",
 		},

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineWifi } from "react-icons/ai";
 import { AiFillClockCircle } from "react-icons/ai";
 import { BsFillCpuFill } from "react-icons/bs";
@@ -45,9 +45,9 @@ export default function Home() {
 	const [networkUp] = useState(Math.floor(Math.random() * 300));
 	const [networkDown] = useState(Math.floor(Math.random() * 300));
 	const [disk] = useState(Math.floor(Math.random() * 6000));
+	const [consoleTime] = useState(new Date().toLocaleTimeString());
 
-	const [consoleDate] = useState(new Date().toLocaleString());
-
+	// Timer
 	const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
 		useStopwatch({ autoStart: true });
 
@@ -59,7 +59,7 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="flex flex-col min-h-screen">
+			<div className="flex flex-col">
 				{/* header */}
 				<main className="flex flex-col justify-around items-center mt-3">
 					{/* body header */}
@@ -73,7 +73,7 @@ export default function Home() {
 							</button>
 							<button
 								onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
-									pause()
+									reset()
 								}
 								className="bg-neutral-600 p-2 px-5 m-1 text-white rounded grow">
 								Restart
@@ -109,13 +109,13 @@ export default function Home() {
 									</tr>
 									<tr className="flex p-2 hover:bg-gray-600">
 										<td className="text-blue-300 pl-2">
-											[{consoleDate} INFO]:
+											[{consoleTime} INFO]:
 										</td>{" "}
 										<td className="text-white pl-2">Loaded 10 recipes.</td>
 									</tr>
 									<tr className="flex p-2 hover:bg-gray-600">
 										<td className="text-blue-300 pl-2">
-											[{consoleDate} INFO]:
+											[{consoleTime} INFO]:
 										</td>{" "}
 										<td className="text-white pl-2">Generating keypair.</td>
 									</tr>
