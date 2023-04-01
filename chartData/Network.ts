@@ -49,14 +49,14 @@ export const networkData = {
 	datasets: [
 		{
 			fill: true,
-			label: "Up",
+			label: "(Mib) Up",
 			data: randomData(),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},
 		{
 			fill: true,
-			label: "Down",
+			label: "(Mib) Down",
 			data: randomData(),
 			borderColor: "rgb(234,182,118)",
 			backgroundColor: "rgb(226,135,67)",

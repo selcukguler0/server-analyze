@@ -49,7 +49,7 @@ export const cpuLoadData = {
 	datasets: [
 		{
 			fill: true,
-			label: "% CPU Load",
+			label: "(%) CPU Load",
 			data: randomData(),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",

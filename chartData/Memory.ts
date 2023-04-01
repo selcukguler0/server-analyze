@@ -49,7 +49,7 @@ export const memoryData = {
 	datasets: [
 		{
 			fill: true,
-			label: "Mib",
+			label: "(Mib) Memory",
 			data: randomData(),
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
