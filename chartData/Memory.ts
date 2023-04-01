@@ -1,3 +1,5 @@
+import { ChartOptions } from "chart.js";
+
 export const memoryOptions = {
 	responsive: true,
 	plugins: {
@@ -30,7 +32,7 @@ export const memoryOptions = {
 			loop: true,
 		},
 	},
-};
+} as ChartOptions<"line">;
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
 

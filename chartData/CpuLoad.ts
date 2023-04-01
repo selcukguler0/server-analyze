@@ -1,8 +1,10 @@
+import { ChartOptions } from "chart.js";
+
 export const cpuLoadOptions = {
 	responsive: true,
 	plugins: {
 		legend: {
-			position: "top" as const,
+			position: "top",
 			labels: {
 				color: "white",
 			},
@@ -24,13 +26,13 @@ export const cpuLoadOptions = {
 	animations: {
 		tension: {
 			duration: 1000,
-			easing: "easeInQuad",
+			easing: "linear",
 			from: 1,
 			to: 0,
 			loop: true,
 		},
 	},
-};
+} as ChartOptions<'line'>;
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
 

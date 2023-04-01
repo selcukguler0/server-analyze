@@ -1,3 +1,5 @@
+import { ChartOptions } from "chart.js";
+
 export const networkOptions = {
 	responsive: true,
 	plugins: {
@@ -24,13 +26,13 @@ export const networkOptions = {
 	animations: {
 		tension: {
 			duration: 1000,
-			easing: "easeOutBounce",
+			easing: "linear",
 			from: 1,
 			to: 0,
 			loop: true,
 		},
 	},
-};
+} as ChartOptions<"line">;
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
 
