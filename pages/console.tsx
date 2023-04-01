@@ -45,12 +45,28 @@ export default function Home() {
 	const [networkUp] = useState(Math.floor(Math.random() * 300));
 	const [networkDown] = useState(Math.floor(Math.random() * 300));
 	const [disk] = useState(Math.floor(Math.random() * 6000));
-	const [consoleTime] = useState(new Date().toLocaleTimeString());
+	const [loading, setLoading] = useState(true);
+
+	const [consoleTime, setConsoleTime] = useState("10:00:00");
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setConsoleTime(new Date().toLocaleTimeString());
+			setLoading(false);
+		} else {
+			// Return a default value for server rendering
+			setConsoleTime("10:00:00");
+		}
+	}, []);
 
 	// Timer
 	const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
 		useStopwatch({ autoStart: true });
 
+	if (loading) {
+		return <div>Loading</div>;
+	} 
+	
 	return (
 		<>
 			<Head>

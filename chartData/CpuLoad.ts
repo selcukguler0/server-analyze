@@ -32,12 +32,12 @@ export const cpuLoadOptions = {
 			loop: true,
 		},
 	},
-} as ChartOptions<'line'>;
+} as ChartOptions<"line">;
 
 const labels = ["t1", "t2", "t3", "t4", "t5", "t6"];
 
 // This function is used to generate random data for the chart, but it is also fixing hydration issues
-function randomData() {
+function randomData(): number[] {
 	if (typeof window !== "undefined") {
 		return Array.from({ length: 6 }, () => Math.floor(Math.random() * 150));
 	} else {
